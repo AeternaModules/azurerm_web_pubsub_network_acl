@@ -16,7 +16,7 @@ EOT
 
   type = map(object({
     web_pubsub_id  = string
-    default_action = optional(string, "Deny")
+    default_action = optional(string) # Default: "Deny"
     public_network = object({
       allowed_request_types = optional(set(string))
       denied_request_types  = optional(set(string))
