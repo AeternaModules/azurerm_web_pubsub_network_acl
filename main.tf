@@ -10,7 +10,7 @@ resource "azurerm_web_pubsub_network_acl" "web_pubsub_network_acls" {
   }
 
   dynamic "private_endpoint" {
-    for_each = each.value.private_endpoint != null ? [each.value.private_endpoint] : []
+    for_each = each.value.private_endpoint != null ? each.value.private_endpoint : []
     content {
       allowed_request_types = private_endpoint.value.allowed_request_types
       denied_request_types  = private_endpoint.value.denied_request_types

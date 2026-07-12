@@ -21,11 +21,11 @@ EOT
       allowed_request_types = optional(set(string))
       denied_request_types  = optional(set(string))
     })
-    private_endpoint = optional(object({
+    private_endpoint = optional(list(object({
       allowed_request_types = optional(set(string))
       denied_request_types  = optional(set(string))
       id                    = string
-    }))
+    })))
   }))
   # --- Unconfirmed validation candidates, derived from azurerm_web_pubsub_network_acl's provider source ---
   # Not auto-enabled: either a bespoke provider validator we can't safely translate,
