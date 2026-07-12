@@ -1,3 +1,7 @@
+output "web_pubsub_network_acls_id" {
+  description = "Map of id values across all web_pubsub_network_acls, keyed the same as var.web_pubsub_network_acls"
+  value       = { for k, v in azurerm_web_pubsub_network_acl.web_pubsub_network_acls : k => v.id }
+}
 output "web_pubsub_network_acls_default_action" {
   description = "Map of default_action values across all web_pubsub_network_acls, keyed the same as var.web_pubsub_network_acls"
   value       = { for k, v in azurerm_web_pubsub_network_acl.web_pubsub_network_acls : k => v.default_action }
