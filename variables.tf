@@ -27,27 +27,6 @@ EOT
       id                    = string
     })))
   }))
-  # --- Unconfirmed validation candidates, derived from azurerm_web_pubsub_network_acl's provider source ---
-  # Not auto-enabled: either a bespoke provider validator we can't safely translate,
-  # or a path that crosses a list-typed block (needs its own for_each wrapping).
-  # Review, translate into a real validation{} block above, and delete once confirmed.
-  # path: web_pubsub_id
-  #   source:    [from validationFunctionForResourceID] !ok
-  # path: web_pubsub_id
-  #   source:    [from validationFunctionForResourceID] err != nil
-  # path: default_action
-  #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
-  # path: public_network.allowed_request_types[*]
-  #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
-  # path: public_network.denied_request_types[*]
-  #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
-  # path: private_endpoint.id
-  #   source:    [from privateendpoints.ValidatePrivateEndpointID] !ok
-  # path: private_endpoint.id
-  #   source:    [from privateendpoints.ValidatePrivateEndpointID] err != nil
-  # path: private_endpoint.allowed_request_types[*]
-  #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
-  # path: private_endpoint.denied_request_types[*]
-  #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
+  # Note: 9 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
 }
 
