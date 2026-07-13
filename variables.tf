@@ -16,7 +16,7 @@ EOT
 
   type = map(object({
     web_pubsub_id  = string
-    default_action = optional(string) # Default: "Deny"
+    default_action = optional(string)
     public_network = object({
       allowed_request_types = optional(set(string))
       denied_request_types  = optional(set(string))
@@ -31,6 +31,10 @@ EOT
   # Not auto-enabled: either a bespoke provider validator we can't safely translate,
   # or a path that crosses a list-typed block (needs its own for_each wrapping).
   # Review, translate into a real validation{} block above, and delete once confirmed.
+  # path: web_pubsub_id
+  #   source:    [from validationFunctionForResourceID] !ok
+  # path: web_pubsub_id
+  #   source:    [from validationFunctionForResourceID] err != nil
   # path: default_action
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
   # path: public_network.allowed_request_types[*]
