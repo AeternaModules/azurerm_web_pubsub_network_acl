@@ -12,7 +12,7 @@ output "web_pubsub_network_acls_private_endpoint" {
 }
 output "web_pubsub_network_acls_public_network" {
   description = "Map of public_network values across all web_pubsub_network_acls, keyed the same as var.web_pubsub_network_acls"
-  value       = { for k, v in azurerm_web_pubsub_network_acl.web_pubsub_network_acls : k => v.public_network if v.public_network != null && length(v.public_network) > 0 }
+  value       = { for k, v in azurerm_web_pubsub_network_acl.web_pubsub_network_acls : k => one(v.public_network) if v.public_network != null && length(v.public_network) > 0 }
 }
 output "web_pubsub_network_acls_web_pubsub_id" {
   description = "Map of web_pubsub_id values across all web_pubsub_network_acls, keyed the same as var.web_pubsub_network_acls"
